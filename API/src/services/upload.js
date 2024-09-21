@@ -29,7 +29,7 @@ const createDocument = async (context) => {
     status: "ready",
   });
 
-  const path = `/updates/${upload.project}/${upload.version}/${upload._id}`;
+  const path = `/updates/${upload.project}`;
   fs.rmSync(path, { recursive: true, force: true });
   fs.mkdirSync(path, { recursive: true });
 
@@ -42,7 +42,7 @@ const createDocument = async (context) => {
     let dependencies = null;
     let updateId = null;
 
-    const newPath = path + "/daiviet";
+    const newPath = path + "/" + upload.version;
 
     const info = getJSONInfo({ path: newPath });
     appJson = info.appJson;
