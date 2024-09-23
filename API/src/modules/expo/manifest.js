@@ -55,11 +55,6 @@ module.exports.hanldeManifestData = async (app, { query, headers }) => {
   try {
     const { metadataJson, createdAt, id } = getMetadataSync(update);
 
-    console.log(
-      "🚀 ~ module.exports.hanldeManifestData= ~ getMetadataSync(update):",
-      getMetadataSync(update)
-    );
-
     const platformSpecificMetadata = metadataJson.fileMetadata[platform];
 
     const manifest = {

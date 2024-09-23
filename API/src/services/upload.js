@@ -23,7 +23,7 @@ const createDocument = async (context) => {
     size: context.result.size,
     project: context.params.headers.project,
     version: context.params.headers.version,
-    releaseChannel: context.params.headers["release-cfhannel"],
+    releaseChannel: context.params.headers["release-channel"],
     gitBranch: context.params.headers["git-branch"] || "Unknown",
     gitCommit: context.params.headers["git-commit"] || "Unknown",
     status: "ready",
@@ -32,6 +32,10 @@ const createDocument = async (context) => {
   const path = `/updates/${upload.project}`;
 
   try {
+    // if (fs.existsSync(path)) {
+    //   throw new Err.GeneralError(`Already exist folder ${upload.project}`);
+    // }
+
     const directory = await unzipper.Open.file(upload.filename);
 
     await directory.extract({ path });

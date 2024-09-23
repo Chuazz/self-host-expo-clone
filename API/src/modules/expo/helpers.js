@@ -71,7 +71,6 @@ module.exports.getMetadataSync = (update) => {
   try {
     const metadataPath = `${update.path}/metadata.json`;
 
-    console.log("🚀 ~ metadataPath:", metadataPath);
     const updateMetadataBuffer = fs.readFileSync(
       path.resolve(metadataPath),
       null
