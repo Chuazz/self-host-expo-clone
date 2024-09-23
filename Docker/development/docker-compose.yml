@@ -27,7 +27,7 @@ services:
       - ADMIN_PASSWORD=devserver
       - UPLOAD_KEY=abc123def456
       - NODE_ENV=development
-      - PUBLIC_URL=http://10.0.0.30:3000
+      - PUBLIC_URL=http://localhost:3000
       - DASBHOARD_THROTTLE_MSEC=5000
     command: npx nodemon --inspect=0.0.0.0 src/index.js
 

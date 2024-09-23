@@ -23,15 +23,13 @@ const createDocument = async (context) => {
     size: context.result.size,
     project: context.params.headers.project,
     version: context.params.headers.version,
-    releaseChannel: context.params.headers["release-channel"],
+    releaseChannel: context.params.headers["release-cfhannel"],
     gitBranch: context.params.headers["git-branch"] || "Unknown",
     gitCommit: context.params.headers["git-commit"] || "Unknown",
     status: "ready",
   });
 
   const path = `/updates/${upload.project}`;
-  fs.rmSync(path, { recursive: true, force: true });
-  fs.mkdirSync(path, { recursive: true });
 
   try {
     const directory = await unzipper.Open.file(upload.filename);
@@ -67,7 +65,14 @@ const createDocument = async (context) => {
       .create({ action: "update", keys: "uploads" });
     return context;
   } catch (e) {
-    console.log("🚀 ~ createDocument ~ e:", e);
+    fs.rmSync(upload.filename, { force: true });
+    fs.rmSync(path, { recursive: true, force: true });
+
+    context.app.service("uploads").remove(upload._id);
+
+    throw new Err.BadRequest(
+      "Error extracting the archive: " + JSON.stringify(e, null, 2)
+    );
   }
 };
 

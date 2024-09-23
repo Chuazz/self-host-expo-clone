@@ -45,5 +45,5 @@ if-none-match: W/"c-NsyIKrDf6fQ7+609QlCVGoC3ovk"
 
 
 ### Expo Updates Example Asset request (URL from Manifest)
-GET http://10.0.0.30:3000/api/assets?asset=/updates/customupdates/1.1.1/6308f6a15333310f3e24b409/bundles/android-a2981c79b75b2e0ac9ac3bb17e3865a6.js&contentType=application/javascript&platform=android HTTP/1.1
+GET http://localhost:3000/api/assets?asset=/updates/customupdates/1.1.1/6308f6a15333310f3e24b409/bundles/android-a2981c79b75b2e0ac9ac3bb17e3865a6.js&contentType=application/javascript&platform=android HTTP/1.1
 
