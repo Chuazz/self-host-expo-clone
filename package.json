@@ -8,7 +8,7 @@
   "scripts": {
     "---Dev API & Web---": "",
     "dev:run": "cd Docker/development; docker compose up --build",
-    "dev:stop": "cd Docker/development; docker compose down"
+    "prod:run": "cd Docker/production; docker compose up --build"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
